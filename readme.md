@@ -86,6 +86,7 @@ Implement the **Ranking Page** at `/ranking`.
 - Use TailwindCSS for styling if necessary.
 - Write meaningful and clear commit messages.
 - Maintain good coding practices (error handling, clean architecture, reusability).
+- **Using AI Assistants:** You are encouraged to use AI assistants (like ChatGPT, Gemini, etc.) to help you with this task. However, if you do, please save all prompts you use and the corresponding responses in a separate file (e.g., `ai_interactions.md`) and include it in your submission. This helps us understand your process and how you leverage these tools.
 
 ---
 
