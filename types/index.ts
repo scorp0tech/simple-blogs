@@ -32,3 +32,8 @@ export interface Follow {
   following_id: string
   created_at: string
 }
+
+export interface RankedAuthor extends User {
+  blogs: { likes_count: number }[]
+  total_likes: number
+}

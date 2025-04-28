@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server"
-import type { User } from "@/types"
+import type { User, RankedAuthor } from "@/types"
 import { cookies } from "next/headers"
 
 export async function getUserProfile(userId: string) {
@@ -76,4 +76,34 @@ export async function getFollowingCount(userId: string) {
     .eq("follower_id", userId)
 
   return { count, error }
+}
+
+export async function getAuthorRankings() {
+  const cookieStore = cookies()
+  const supabase = await createClient()
+
+  const { data, error } = await supabase
+    .from("users")
+    .select(`
+      id,
+      username,
+      email,
+      avatar_url,
+      created_at,
+      updated_at,
+      blogs (
+        likes_count
+      )
+    `)
+
+  // Calculate total likes for each author
+  const rankings = data?.map((user: any) => ({
+    ...user,
+    total_likes: user.blogs?.reduce((sum: number, blog: { likes_count: number }) => 
+      sum + (blog.likes_count || 0), 0
+    ) || 0
+  }))
+  .sort((a: RankedAuthor, b: RankedAuthor) => b.total_likes - a.total_likes) || []
+
+  return { rankings: rankings as RankedAuthor[], error }
 }
