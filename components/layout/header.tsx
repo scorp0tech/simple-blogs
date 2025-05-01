@@ -20,13 +20,22 @@ export function Header() {
           </Link>
           {user && (
             <>
-              <Link href="/create" className="text-sm font-medium hover:underline">
+              <Link
+                href="/create"
+                className="text-sm font-medium hover:underline"
+              >
                 Create
               </Link>
-              <Link href="/profile" className="text-sm font-medium hover:underline">
+              <Link
+                href="/profile"
+                className="text-sm font-medium hover:underline"
+              >
                 Profile
               </Link>
-              <Link href="/ranking" className="text-sm font-medium hover:underline">
+              <Link
+                href="/ranking"
+                className="text-sm font-medium hover:underline"
+              >
                 Ranking
               </Link>
             </>
@@ -52,5 +61,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
